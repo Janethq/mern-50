@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const favicon = require("serve-favicon");
 const logger = require("morgan");
-const debug = require("debug")("mern:server")
+const debug = require("debug")("mern:server");
 // Always require and configure near the top
 require("dotenv").config();
 require("./config/database");
@@ -18,11 +18,14 @@ app.use(favicon(path.join(__dirname, "dist", "vite.svg")));
 app.use(express.static(path.join(__dirname, "dist")));
 
 // Put API routes here, before the "catch all" route
+app.get("/api", (req, res) => {
+  res.json({ hello: "world" });
+});
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
 app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 const port = process.env.PORT || 3000;
