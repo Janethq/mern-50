@@ -1,6 +1,5 @@
 const express = require("express");
 const path = require("path");
-const favicon = require("serve-favicon");
 const logger = require("morgan");
 const debug = require("debug")("mern:server");
 // Always require and configure near the top
@@ -14,7 +13,6 @@ app.use(express.json());
 
 // Configure both serve-favicon & static middleware
 // to serve from the production 'build' folder
-app.use(favicon(path.join(__dirname, "dist", "vite.svg")));
 app.use(express.static(path.join(__dirname, "dist")));
 
 // Put API routes here, before the "catch all" route
