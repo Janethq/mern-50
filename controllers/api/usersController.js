@@ -1,5 +1,5 @@
 const debug = require("debug")("mern:controllers:api:usersController");
-const User = require("../models/user");
+const User = require("../../models/user");
 
 const create = async (req, res) => {
   debug("body: %o", req.body);
