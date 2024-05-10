@@ -19,6 +19,7 @@ app.use(express.static(path.join(__dirname, "dist")));
 app.get("/api", (req, res) => {
   res.json({ hello: "world" });
 });
+app.use("/api/users", require("./routes/api/usersRoutes"));
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests

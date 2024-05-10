@@ -1,4 +1,8 @@
+import debug from "debug";
 import { Component } from "react";
+import { signUp } from "../../utilities/users-service";
+
+const log = debug("mern:components:SignUpForm");
 
 export default class SignUpForm extends Component {
   state = {
@@ -15,9 +19,18 @@ export default class SignUpForm extends Component {
     this.setState({ ...this.state, [name]: value });
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
-    alert(JSON.stringify(this.state));
+    const formData = { ...this.state };
+    delete formData.error;
+    delete formData.confirm;
+
+    try {
+      const user = await signUp(formData);
+      log("user: %o", user);
+    } catch (error) {
+      this.setState({ error: "Sign Up Failed" });
+    }
   };
 
   render() {
@@ -67,6 +80,7 @@ export default class SignUpForm extends Component {
           <br />
 
           <button>Sign Up</button>
+          <p>{this.state.error} </p>
         </fieldset>
       </form>
     );
