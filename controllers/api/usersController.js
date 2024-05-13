@@ -2,7 +2,6 @@ const debug = require("debug")("mern:controllers:api:usersController");
 const jwt = require('jsonwebtoken')
 const User = require("../../models/user");
 
-
 const createJWT = (user) =>
   jwt.sign({ user }, process.env.SECRET, { expiresIn: "10mins" });
 
