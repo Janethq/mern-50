@@ -24,7 +24,7 @@ function App() {
   return (
     <>
       <main className="App">
-        <NavBar />
+        <NavBar setUser={setUser} />
 
         <Routes>
           <Route path="/orders" element={<OrderHistoryPage />} />
