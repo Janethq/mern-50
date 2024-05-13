@@ -37,3 +37,10 @@ export const signUp = async (userData) => {
 export const logOut = () => {
   localStorage.removeItem("token");
 };
+
+export const login = (email, password) => {
+  log("%s, %s", email, password);
+  const user = { email, password };
+
+  usersAPI.login(user);
+};

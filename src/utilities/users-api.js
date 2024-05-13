@@ -4,9 +4,9 @@ import debug from "debug";
 const BASE_URL = "/api/users";
 const log = debug("mern:utilities:users-api");
 
-export async function signUp(userData) {
+export async function login(userData) {
   log("userData: %o", userData);
-  const res = await fetch(BASE_URL, {
+  const res = await fetch(`${BASE_URL}/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(userData),
@@ -15,7 +15,7 @@ export async function signUp(userData) {
   if (res.ok) {
     return res.json();
   } else {
-    log("error: Invalid Sign Up");
-    throw new Error("Invalid Sign Up");
+    log("error: Invalid Login");
+    throw new Error("Invalid Login");
   }
 }
