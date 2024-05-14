@@ -43,7 +43,7 @@ const login = async (req, res) => {
 
 const checkToken = (req, res) => {
   const user = getUser(req, res); //res.locals.user;
-  res.json({ msg: user });
+  res.json({ user });
 };
 
 module.exports = {
